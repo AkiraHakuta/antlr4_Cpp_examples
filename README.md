@@ -46,6 +46,13 @@ new : set(CMAKE_INSTALL_PREFIX "C:/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/m
 
 Put the folder `cmake` in  `..mingw64/usr/local`  
 </li>
+<li>
+
+Download [java](https://java.com/ja/download/help/download_options.xml)   
+Download antlr-4.7.2-complete.jar ([Complete ANTLR 4.7.2 Java binaries jar](http://www.antlr.org/download.html))  
+Make C:\Javalib and 
+save antlr-4.7.2-complete.jar in C:/Javalib. 
+</li>
 </ol>
 
 
