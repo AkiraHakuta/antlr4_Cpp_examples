@@ -48,7 +48,7 @@ Put the folder `cmake` in  `..mingw64/usr/local`
 </li>
 <li>
 
-Download [java](https://java.com/ja/download/help/download_options.xml)   
+Download [java](https://www.java.com/en/)   
 Download antlr-4.7.2-complete.jar ([Complete ANTLR 4.7.2 Java binaries jar](http://www.antlr.org/download.html))  
 Make C:\Javalib and 
 save antlr-4.7.2-complete.jar in C:/Javalib. 
