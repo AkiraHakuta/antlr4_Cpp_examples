@@ -1,0 +1,8 @@
+{
+    "description" : "An imaginary server config file",
+    "logs" : {"level":"verbose", "dir":"/var/log"},
+    "host" : "antlr.org",
+    "admin": ["parrt", "tombu"],
+    "aliases": [],
+    "test1": [{"test2": 1.4142}, {"test3": {"test4": [true, false, null]}}]
+}

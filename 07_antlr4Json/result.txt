@@ -1,0 +1,79 @@
+json's address is 66
+ajson[   1]: name =         String, child =    0, sibling =    0, key = , atom = An imaginary server config file
+ajson[   2]: name =        Element, child =    1, sibling =    0, key = , atom = 
+ajson[   3]: name =         Member, child =    2, sibling =   13, key = description, atom = 
+ajson[   4]: name =         String, child =    0, sibling =    0, key = , atom = verbose
+ajson[   5]: name =        Element, child =    4, sibling =    0, key = , atom = 
+ajson[   6]: name =         Member, child =    5, sibling =    9, key = level, atom = 
+ajson[   7]: name =         String, child =    0, sibling =    0, key = , atom = /var/log
+ajson[   8]: name =        Element, child =    7, sibling =    0, key = , atom = 
+ajson[   9]: name =         Member, child =    8, sibling =    0, key = dir, atom = 
+ajson[  10]: name =       AnObject, child =    6, sibling =    0, key = , atom = 
+ajson[  11]: name =    ObjectValue, child =   10, sibling =    0, key = , atom = 
+ajson[  12]: name =        Element, child =   11, sibling =    0, key = , atom = 
+ajson[  13]: name =         Member, child =   12, sibling =   16, key = logs, atom = 
+ajson[  14]: name =         String, child =    0, sibling =    0, key = , atom = antlr.org
+ajson[  15]: name =        Element, child =   14, sibling =    0, key = , atom = 
+ajson[  16]: name =         Member, child =   15, sibling =   24, key = host, atom = 
+ajson[  17]: name =         String, child =    0, sibling =    0, key = , atom = parrt
+ajson[  18]: name =        Element, child =   17, sibling =   20, key = , atom = 
+ajson[  19]: name =         String, child =    0, sibling =    0, key = , atom = tombu
+ajson[  20]: name =        Element, child =   19, sibling =    0, key = , atom = 
+ajson[  21]: name =  ArrayOfValues, child =   18, sibling =    0, key = , atom = 
+ajson[  22]: name =     ArrayValue, child =   21, sibling =    0, key = , atom = 
+ajson[  23]: name =        Element, child =   22, sibling =    0, key = , atom = 
+ajson[  24]: name =         Member, child =   23, sibling =   28, key = admin, atom = 
+ajson[  25]: name =    EmptyObject, child =    0, sibling =    0, key = , atom = 
+ajson[  26]: name =     ArrayValue, child =   25, sibling =    0, key = , atom = 
+ajson[  27]: name =        Element, child =   26, sibling =    0, key = , atom = 
+ajson[  28]: name =         Member, child =   27, sibling =   62, key = aliases, atom = 
+ajson[  29]: name =         Double, child =    0, sibling =    0, key = , atom = 1.4142
+ajson[  30]: name =        Element, child =   29, sibling =   32, key = , atom = 
+ajson[  31]: name =         IntExp, child =    0, sibling =    0, key = , atom = 12e3
+ajson[  32]: name =        Element, child =   31, sibling =   34, key = , atom = 
+ajson[  33]: name =        Integer, child =    0, sibling =    0, key = , atom = -456
+ajson[  34]: name =        Element, child =   33, sibling =    0, key = , atom = 
+ajson[  35]: name =  ArrayOfValues, child =   30, sibling =    0, key = , atom = 
+ajson[  36]: name =     ArrayValue, child =   35, sibling =    0, key = , atom = 
+ajson[  37]: name =        Element, child =   36, sibling =    0, key = , atom = 
+ajson[  38]: name =         Member, child =   37, sibling =    0, key = test2, atom = 
+ajson[  39]: name =       AnObject, child =   38, sibling =    0, key = , atom = 
+ajson[  40]: name =    ObjectValue, child =   39, sibling =    0, key = , atom = 
+ajson[  41]: name =        Element, child =   40, sibling =   58, key = , atom = 
+ajson[  42]: name =           Bool, child =    0, sibling =    0, key = , atom = true
+ajson[  43]: name =        Element, child =   42, sibling =   45, key = , atom = 
+ajson[  44]: name =           Bool, child =    0, sibling =    0, key = , atom = false
+ajson[  45]: name =        Element, child =   44, sibling =   47, key = , atom = 
+ajson[  46]: name =           Null, child =    0, sibling =    0, key = , atom = null
+ajson[  47]: name =        Element, child =   46, sibling =    0, key = , atom = 
+ajson[  48]: name =  ArrayOfValues, child =   43, sibling =    0, key = , atom = 
+ajson[  49]: name =     ArrayValue, child =   48, sibling =    0, key = , atom = 
+ajson[  50]: name =        Element, child =   49, sibling =    0, key = , atom = 
+ajson[  51]: name =         Member, child =   50, sibling =    0, key = test4, atom = 
+ajson[  52]: name =       AnObject, child =   51, sibling =    0, key = , atom = 
+ajson[  53]: name =    ObjectValue, child =   52, sibling =    0, key = , atom = 
+ajson[  54]: name =        Element, child =   53, sibling =    0, key = , atom = 
+ajson[  55]: name =         Member, child =   54, sibling =    0, key = test3, atom = 
+ajson[  56]: name =       AnObject, child =   55, sibling =    0, key = , atom = 
+ajson[  57]: name =    ObjectValue, child =   56, sibling =    0, key = , atom = 
+ajson[  58]: name =        Element, child =   57, sibling =    0, key = , atom = 
+ajson[  59]: name =  ArrayOfValues, child =   41, sibling =    0, key = , atom = 
+ajson[  60]: name =     ArrayValue, child =   59, sibling =    0, key = , atom = 
+ajson[  61]: name =        Element, child =   60, sibling =    0, key = , atom = 
+ajson[  62]: name =         Member, child =   61, sibling =    0, key = test1, atom = 
+ajson[  63]: name =       AnObject, child =    3, sibling =    0, key = , atom = 
+ajson[  64]: name =    ObjectValue, child =   63, sibling =    0, key = , atom = 
+ajson[  65]: name =        Element, child =   64, sibling =    0, key = , atom = 
+ajson[  66]: name =           Json, child =   65, sibling =    0, key = , atom = 
+
+jasonNodeWalk test
+ajson[66] --cccc-> ajson[3]: name = Member, key = description, atom = 
+ajson[66] --cccccc-> ajson[1]: name = String, key = , atom = An imaginary server config file
+ajson[66] --ccccccc-> is wrong
+ajson[66] --ccccsssccccc-> ajson[17]: name = String, key = , atom = parrt
+ajson[66] --ccccsssccccsc-> ajson[19]: name = String, key = , atom = tombu
+
+getJasonNodeKeyAddr test
+ajson[28].key = aliases
+ajson[9].key = dir
+there is not "real" in ajson.key
