@@ -1,0 +1,17 @@
+edges: {a=[b,c,d],b=[c],c=[b],fact=[print,fact],main=[fact,a]}
+functions: [a,b,c,d,e,fact,main]
+
+digraph G {
+  nodes:
+    a;b;c;d;e;fact;main;
+  edges:
+    a -> b;
+    a -> c;
+    a -> d;
+    b -> c;
+    c -> b;
+    fact -> print;
+    fact -> fact;
+    main -> fact;
+    main -> a;
+}

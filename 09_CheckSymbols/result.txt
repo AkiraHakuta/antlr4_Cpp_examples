@@ -1,0 +1,13 @@
+*** Scan Definitions ***
+locals:[]
+function<f:INT>:[<x:INT>,<y:FLOAT>]
+locals:[<x:INT>, <y:FLOAT>]
+function<g:VOID>:[]
+globals:[function<f:INT>:[<x:INT>,<y:FLOAT>], function<g:VOID>:[]]
+
+*** Check errors ***
+line 3:4 no such variable: i
+line 4:4 g is not a variable
+line 13:4 no such function: z
+line 14:4 y is not a function
+line 15:8 f is not a variable
