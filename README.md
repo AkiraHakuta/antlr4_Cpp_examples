@@ -1,59 +1,48 @@
 ## antlr4 Cpp examples  
 What is ANTLR4  
-[ANTLR4](http://www.antlr.org) is a parser generator.
+[ANTLR4](http://www.antlr.org) (ANother Tool for Language Recognition) is a powerful parser generator  
+
 
 ### Creating antlr4 C++ library on mingw-w64  
 <ol>
 <li>
 	
 Install [mingw-w64](https://mingw-w64.org/doku.php)  
-Set path C:\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin   
 
 </li>
 <li>
 	
-Install [cmake](https://cmake.org)  
-cmake-3.15.2-win64-x64.msi  
-Set path C:\CMake\bin  
+Install [cmake](https://cmake.org/download/)  
 
 </li>
 <li>
   
-Download [antlr4-4.7.2.zip](https://github.com/antlr/antlr4) 
+Download [antlr4-4.9.2.zip](https://github.com/antlr/antlr4/tags)  
 
 </li> 
 <li>  
 
-Making antlr4 C++ libraries `libantlr4-runtime.a`  
+Making antlr4 C++ libraries  `libantlr4-runtime.a`, `libantlr4-runtime.dll`, `libantlr4-runtime.dll.a`  
+  
 Open `Dos Command Prompt`  
-$ unzip antlr4-4.7.2.zip  
-$ cd .../antlr4-4.7.2/runtime/Cpp  
-$ mkdir build  
-$ cd build  
-$ cmake -G "MinGW Makefiles" ..  
-$ mingw32-make.exe  
-$ mingw32-make.exe install  
-If the following error message shows  
-	
+make directory C:/antlr4/antlr4-4.9.2   
 ```
-Install the project...   
--- Install configuration: "Release"  
-CMake Error at cmake_install.cmake:36 (file):  
-file cannot create directory: C:/Program Files  
-``` 
+> unzip antlr4-4.9.2.zip 
+> cd .../antlr4-4.9.2/runtime/Cpp  
+> mkdir build  
+> cd build  
+> cmake -G "MinGW Makefiles" .. -D CMAKE_INSTALL_PREFIX=C:/antlr4/antlr4-4.9.2 
+> mingw32-make.exe install 
+```  
 
-You change `cmake_install.cmake` as follows  
-old : set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/LIBANTLR4")  
-new : set(CMAKE_INSTALL_PREFIX "C:/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/local") 
-
-Put the folder `cmake` in  `..mingw64/local`  
+Put the folder `cmake` in  `C:/antlr4/antlr4-4.9.2`
 </li>
 <li>
 
 Download [java](https://www.java.com/en/)   
-Download antlr-4.7.2-complete.jar ([Complete ANTLR 4.7.2 Java binaries jar](http://www.antlr.org/download.html))  
+Download antlr-4.9.2-complete.jar ([Complete ANTLR 4.9.2 Java binaries jar](http://www.antlr.org/download.html))  
 Make C:\Javalib and 
-save antlr-4.7.2-complete.jar in C:/Javalib. 
+save antlr-4.9.2-complete.jar in C:/Javalib. 
 </li>
 </ol>
 
@@ -201,11 +190,13 @@ test.txt
 To compile,   
 open  `Dos Command Prompt`  
 from antlr4_Cpp_examples/01_simpleExpr1  
-$ mkdir build  
-$ cd build  
-$ cmake -G "MinGW Makefiles" ..  
-$ mingw32-make.exe  
-$ test_SimpleExpr1.exe ../test.txt   
+```
+> mkdir build  
+> cd build  
+> cmake -G "MinGW Makefiles" ..  
+> mingw32-make.exe  
+> test_SimpleExpr1.exe ../test.txt   
+```
 
 output  
 ```
