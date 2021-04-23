@@ -7,7 +7,7 @@ What is ANTLR4
 <ol>
 <li>
 	
-Install [mingw-w64](https://mingw-w64.org/doku.php)  
+Install [mingw-w64](http://mingw-w64.org/doku.php)  
 
 </li>
 <li>
