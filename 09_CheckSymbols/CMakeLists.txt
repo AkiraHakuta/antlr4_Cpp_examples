@@ -1,8 +1,8 @@
-# $ mkdir build
-# $ cd build
-# $ cmake -G "MinGW Makefiles" ..
-# $ mingw32-make.exe  
-# $ CheckSymbols.exe ../test.txt
+# > mkdir build
+# > cd build
+# > cmake -G "MinGW Makefiles" ..
+# > mingw32-make.exe  
+# > CheckSymbols.exe ../test.txt
 # see result.txt
 
 cmake_minimum_required(VERSION 3.6)
@@ -11,9 +11,9 @@ project(CheckSymbols)
 set(CMAKE_CXX_STANDARD 11)
 add_definitions(-DANTLR4CPP_STATIC)
 
-set(ANTLR4_ROOT C:/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/local)
+set(ANTLR4_ROOT C:/antlr4/antlr4-4.9.2)
 list(APPEND CMAKE_MODULE_PATH ${ANTLR4_ROOT}/cmake)
-set(ANTLR_EXECUTABLE C:/Javalib/antlr-4.7.2-complete.jar)
+set(ANTLR_EXECUTABLE C:/Javalib/antlr-4.9.2-complete.jar)
 
 include_directories(${ANTLR4_ROOT}/include/antlr4-runtime)
 
