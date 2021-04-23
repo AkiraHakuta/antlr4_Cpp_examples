@@ -1,17 +1,17 @@
-# $ mkdir build
-# $ cd build
-# $ cmake -G "MinGW Makefiles" ..
-# $ mingw32-make.exe  
-# $ test_SimpleExpr2.exe ../test.txt
+# > mkdir build
+# > cd build
+# > cmake -G "MinGW Makefiles" ..
+# > mingw32-make.exe  
+# > test_SimpleExpr2.exe ../test.txt
 
 cmake_minimum_required(VERSION 3.6)
 
 project(ex02) 
 set(CMAKE_CXX_STANDARD 11)
 
-set(ANTLR4_ROOT C:/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/local)
+set(ANTLR4_ROOT C:/antlr4/antlr4-4.9.2)
 list(APPEND CMAKE_MODULE_PATH ${ANTLR4_ROOT}/cmake)
-set(ANTLR_EXECUTABLE C:/Javalib/antlr-4.7.2-complete.jar)
+set(ANTLR_EXECUTABLE C:/Javalib/antlr-4.9.2-complete.jar)
 
 include_directories(${ANTLR4_ROOT}/include/antlr4-runtime)
 add_library(antlr4_shared SHARED IMPORTED)
