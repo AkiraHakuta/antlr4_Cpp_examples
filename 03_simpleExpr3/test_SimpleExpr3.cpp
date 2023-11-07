@@ -37,7 +37,7 @@ for (int i = 1; i < in_string.size(); i++)
         else
           out_string += in_string[i];
  
-return out_string;
+    return out_string;
 }
 
 

@@ -5,8 +5,9 @@
 #include "SimpleExpr1Parser.h"
 #include "SimpleExpr1Visitor.h"
 
-using namespace antlr4;
+
 using namespace std;
+using namespace antlr4;
 
 
 string indent_sp(int size)
@@ -37,40 +38,40 @@ string beautify_lisp_string(string in_string)
         else
           out_string += in_string[i];
      
-return out_string;
+    return out_string;
 }
 
 
 class Calc : public SimpleExpr1Visitor{
 public:
  
-    antlrcpp::Any visitStat(SimpleExpr1Parser::StatContext *ctx) override {
+    any visitStat(SimpleExpr1Parser::StatContext *ctx) override {
         return visit(ctx->expr());
     }
 
 
-    antlrcpp::Any visitAdd(SimpleExpr1Parser::AddContext *ctx) override {
-        int left  = visit(ctx->expr(0));
-        int right = visit(ctx->expr(1));
-        return left + right;
+    any visitAdd(SimpleExpr1Parser::AddContext *ctx) override {
+        any left  = visit(ctx->expr(0));
+        any right = visit(ctx->expr(1));
+        return  any_cast<int>(left) +  any_cast<int>(right);
     }
 
 
-    antlrcpp::Any visitExpo(SimpleExpr1Parser::ExpoContext *ctx) override {
-        int left  = visit(ctx->expr(0));
-        int right = visit(ctx->expr(1));
-        return (int) pow(left, right);
+    any visitExpo(SimpleExpr1Parser::ExpoContext *ctx) override {
+        any left  = visit(ctx->expr(0));
+        any right = visit(ctx->expr(1));
+        return (int) pow( any_cast<int>(left),  any_cast<int>(right));
     }
 
 
-    antlrcpp::Any visitMult(SimpleExpr1Parser::MultContext *ctx) override {
-        int right = visit(ctx->expr(0));
-        int left  = visit(ctx->expr(1));
-        return left * right; 
+    any visitMult(SimpleExpr1Parser::MultContext *ctx) override {
+        any left  = visit(ctx->expr(0));
+        any right = visit(ctx->expr(1));
+        return  any_cast<int>(left) *  any_cast<int>(right); 
     }
 
 
-    antlrcpp::Any visitInt(SimpleExpr1Parser::IntContext *ctx) override {
+    any visitInt(SimpleExpr1Parser::IntContext *ctx) override {
         return stoi(ctx->INT()->getText());
     }
 
@@ -100,8 +101,8 @@ int main(int argc, const char *args[])
     cout <<beautify_lisp_string(lisp_tree_str) << endl;
 
     Calc *calc = new Calc();
-    int result = calc->visit(tree);
-    cout << "\nresult = " << result << endl;
+    any result = calc->visit(tree);
+    cout << "\nresult = " << any_cast<int>(result) << endl;
 
     return 0;
 }

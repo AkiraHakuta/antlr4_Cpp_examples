@@ -3,7 +3,7 @@ find_package(Java QUIET COMPONENTS Runtime)
 
 if(NOT ANTLR_EXECUTABLE)
   find_program(ANTLR_EXECUTABLE
-               NAMES antlr.jar antlr4.jar antlr-4.jar antlr-4.7.2-complete.jar)
+               NAMES antlr.jar antlr4.jar antlr-4.jar antlr-4.13.1-complete.jar)
 endif()
 
 if(ANTLR_EXECUTABLE AND Java_JAVA_EXECUTABLE)
@@ -15,7 +15,7 @@ if(ANTLR_EXECUTABLE AND Java_JAVA_EXECUTABLE)
       OUTPUT_STRIP_TRAILING_WHITESPACE)
 
   if(ANTLR_COMMAND_RESULT EQUAL 0)
-    string(REGEX MATCH "Version [0-9]+(\\.[0-9])*" ANTLR_VERSION ${ANTLR_COMMAND_OUTPUT})
+    string(REGEX MATCH "Version [0-9]+(\\.[0-9]+)*" ANTLR_VERSION ${ANTLR_COMMAND_OUTPUT})
     string(REPLACE "Version " "" ANTLR_VERSION ${ANTLR_VERSION})
   else()
     message(
@@ -26,7 +26,7 @@ if(ANTLR_EXECUTABLE AND Java_JAVA_EXECUTABLE)
 
   macro(ANTLR_TARGET Name InputFile)
     set(ANTLR_OPTIONS LEXER PARSER LISTENER VISITOR)
-    set(ANTLR_ONE_VALUE_ARGS PACKAGE OUTPUT_DIRECTORY DEPENDS_ANTLR LIB_DIRECTORY) # appended LIB_DIRECTORY
+    set(ANTLR_ONE_VALUE_ARGS PACKAGE OUTPUT_DIRECTORY DEPENDS_ANTLR)
     set(ANTLR_MULTI_VALUE_ARGS COMPILE_FLAGS DEPENDS)
     cmake_parse_arguments(ANTLR_TARGET
                           "${ANTLR_OPTIONS}"
@@ -101,11 +101,6 @@ if(ANTLR_EXECUTABLE AND Java_JAVA_EXECUTABLE)
                 "ANTLR target '${ANTLR_TARGET_DEPENDS_ANTLR}' not found")
       endif()
 
-      # appended
-      if(ANTLR_TARGET_LIB_DIRECTORY)
-        list(APPEND ANTLR_TARGET_COMPILE_FLAGS -lib ${ANTLR_TARGET_LIB_DIRECTORY})
-      endif()
-      
     endif()
 
     add_custom_command(

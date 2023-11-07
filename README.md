@@ -7,42 +7,47 @@ What is ANTLR4
 <ol>
 <li>
 	
-Install [mingw-w64](http://mingw-w64.org/doku.php)  
+Install [mingw-w64](https://www.mingw-w64.org/downloads/)  
+
+x86_64-13.1.0-release-win32-seh-msvcrt-rt_v11-rev1.7z  
 
 </li>
 <li>
 	
 Install [cmake](https://cmake.org/download/)  
 
+Windows x64 Installer:  cmake-3.27.4-windows-x86_64.msi  
+
 </li>
 <li>
   
-Download [antlr4-4.9.2.zip](https://github.com/antlr/antlr4/tags)  
+Download [antlr4-4.13.1.zip](https://github.com/antlr/antlr4/tags)  
+
 
 </li> 
 <li>  
 
-Making antlr4 C++ libraries  `libantlr4-runtime.a`, `libantlr4-runtime.dll`, `libantlr4-runtime.dll.a`  
+Making antlr4 C++ libraries  `libantlr4-runtime-static.a`, `libantlr4-runtime.dll`
   
 Open `Dos Command Prompt`  
-make directory C:/antlr4/antlr4-4.9.2   
+make directory C:/antlr4/antlr4-4.13.1   
 ```
-> unzip antlr4-4.9.2.zip 
-> cd .../antlr4-4.9.2/runtime/Cpp  
+> unzip antlr4-4.13.1.zip 
+> cd .../antlr4-4.13.1/runtime/Cpp  
 > mkdir build  
 > cd build  
-> cmake -G "MinGW Makefiles" .. -D CMAKE_INSTALL_PREFIX=C:/antlr4/antlr4-4.9.2 
+> cmake -G "MinGW Makefiles" .. -D CMAKE_INSTALL_PREFIX=C:/antlr4/antlr4-4.13.1
 > mingw32-make.exe install 
 ```  
 
-Put the folder `cmake` in  `C:/antlr4/antlr4-4.9.2`
+Put the folder `cmake` in  `C:/antlr4/antlr4-4.13.1 `
 </li>
 <li>
 
-Download [java](https://www.java.com/en/)   
-Download antlr-4.9.2-complete.jar ([Complete ANTLR 4.9.2 Java binaries jar](http://www.antlr.org/download.html))  
+Download [java](https://www.oracle.com/jp/java/technologies/downloads/#jdk21-windows)   
+Download antlr-4.13.1-complete.jar ([ANTLR 4.13.1 Java runtime binaries jar](http://www.antlr.org/download.html))  
 Make C:\Javalib and 
-save antlr-4.9.2-complete.jar in C:/Javalib. 
+save antlr-4.13.1-complete.jar in C:/Javalib. 
 </li>
 </ol>
 
@@ -71,8 +76,6 @@ WS : [ \t\n\r]+ -> skip ;
 
 test_SimpleExpr1.cpp  
 ```c++   
-#include <iostream>
-#include <fstream>
 #include <cmath>
 
 #include "antlr4-runtime.h"
@@ -80,14 +83,15 @@ test_SimpleExpr1.cpp
 #include "SimpleExpr1Parser.h"
 #include "SimpleExpr1Visitor.h"
 
-using namespace antlr4;
+
 using namespace std;
+using namespace antlr4;
 
 
 string indent_sp(int size)
 { 
     string result = "";
-    for(int i; i < size; i++)
+    for(int i = 0; i < size; i++)
       result += " ";
     return result;
 }
@@ -96,7 +100,7 @@ string indent_sp(int size)
 string beautify_lisp_string(string in_string)
 {
     int indent_size = 3;
-    int curr_indent = indent_size;
+    int curr_indent = 0;
     string out_string = string(1,in_string[0]);
     string indent = "";
     for (int i = 1; i < in_string.size(); i++)
@@ -112,40 +116,40 @@ string beautify_lisp_string(string in_string)
         else
           out_string += in_string[i];
      
-return out_string;
+    return out_string;
 }
 
 
 class Calc : public SimpleExpr1Visitor{
 public:
  
-    antlrcpp::Any visitStat(SimpleExpr1Parser::StatContext *ctx) override {
+    any visitStat(SimpleExpr1Parser::StatContext *ctx) override {
         return visit(ctx->expr());
     }
 
 
-    antlrcpp::Any visitAdd(SimpleExpr1Parser::AddContext *ctx) override {
-        int left  = visit(ctx->expr(0));
-        int right = visit(ctx->expr(1));
-        return left + right;
+    any visitAdd(SimpleExpr1Parser::AddContext *ctx) override {
+        any left  = visit(ctx->expr(0));
+        any right = visit(ctx->expr(1));
+        return  any_cast<int>(left) +  any_cast<int>(right);
     }
 
 
-    antlrcpp::Any visitExpo(SimpleExpr1Parser::ExpoContext *ctx) override {
-        int left  = visit(ctx->expr(0));
-        int right = visit(ctx->expr(1));
-        return (int) pow(left, right);
+    any visitExpo(SimpleExpr1Parser::ExpoContext *ctx) override {
+        any left  = visit(ctx->expr(0));
+        any right = visit(ctx->expr(1));
+        return (int) pow( any_cast<int>(left),  any_cast<int>(right));
     }
 
 
-    antlrcpp::Any visitMult(SimpleExpr1Parser::MultContext *ctx) override {
-        int right = visit(ctx->expr(0));
-        int left  = visit(ctx->expr(1));
-        return left * right; 
+    any visitMult(SimpleExpr1Parser::MultContext *ctx) override {
+        any left  = visit(ctx->expr(0));
+        any right = visit(ctx->expr(1));
+        return  any_cast<int>(left) *  any_cast<int>(right); 
     }
 
 
-    antlrcpp::Any visitInt(SimpleExpr1Parser::IntContext *ctx) override {
+    any visitInt(SimpleExpr1Parser::IntContext *ctx) override {
         return stoi(ctx->INT()->getText());
     }
 
@@ -175,11 +179,12 @@ int main(int argc, const char *args[])
     cout <<beautify_lisp_string(lisp_tree_str) << endl;
 
     Calc *calc = new Calc();
-    int result = calc->visit(tree);
-    cout << "\nresult=" << result << endl;
+    any result = calc->visit(tree);
+    cout << "\nresult = " << any_cast<int>(result) << endl;
 
     return 0;
 }
+
 ```
 
 test.txt  
@@ -216,17 +221,17 @@ Tokens:
 
 Parse tree (Lisp format):
 (stat 
+   (expr 
       (expr 
+         (expr 100) + 
          (expr 
-            (expr 100) + 
-            (expr 
-               (expr 3) * 
-               (expr 4))) + 
+            (expr 3) * 
+            (expr 4))) + 
+      (expr 
+         (expr 2) ^ 
          (expr 
-            (expr 2) ^ 
-            (expr 
-               (expr 3) ^ 
-               (expr 2)))))
+            (expr 3) ^ 
+            (expr 2)))))
 
 result = 624
 ```

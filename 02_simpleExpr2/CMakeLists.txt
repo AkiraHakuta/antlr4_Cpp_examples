@@ -7,15 +7,18 @@
 cmake_minimum_required(VERSION 3.6)
 
 project(ex02) 
-set(CMAKE_CXX_STANDARD 11)
 
-set(ANTLR4_ROOT C:/antlr4/antlr4-4.9.2)
+set(CMAKE_CXX_STANDARD 17)
+add_definitions(-DANTLR4CPP_STATIC)
+
+set(ANTLR4_ROOT C:/antlr4/antlr4-4.13.1)
 list(APPEND CMAKE_MODULE_PATH ${ANTLR4_ROOT}/cmake)
-set(ANTLR_EXECUTABLE C:/Javalib/antlr-4.9.2-complete.jar)
+set(ANTLR_EXECUTABLE C:/Javalib/antlr-4.13.1-complete.jar)
 
 include_directories(${ANTLR4_ROOT}/include/antlr4-runtime)
+
 add_library(antlr4_shared SHARED IMPORTED)
-set(ANTLR4_SHARED_DLL ${ANTLR4_ROOT}/lib/libantlr4-runtime.dll)
+set(ANTLR4_SHARED_DLL ${ANTLR4_ROOT}/bin/libantlr4-runtime.dll)
 set_target_properties(antlr4_shared PROPERTIES IMPORTED_IMPLIB ${ANTLR4_SHARED_DLL})
 
 find_package(ANTLR REQUIRED)

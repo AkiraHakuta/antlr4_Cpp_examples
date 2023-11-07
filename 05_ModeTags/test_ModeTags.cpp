@@ -34,7 +34,7 @@ int indent_size = 3;
         else
                 out_string += in_string[i];
      
-return out_string;
+    return out_string;
 }
 
 

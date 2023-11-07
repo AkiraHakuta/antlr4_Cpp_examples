@@ -37,7 +37,7 @@ string beautify_lisp_string(string in_string)
         else
         	out_string += in_string[i];
      
-return out_string;
+    return out_string;
 }
 
 
@@ -47,13 +47,13 @@ class Calc : public ExprVisitor{
         bool output_flag;
 
 
-        antlrcpp::Any visitProg(ExprParser::ProgContext *ctx) override {
+        any visitProg(ExprParser::ProgContext *ctx) override {
             vector<ExprParser::StatContext *> state_ctx = ctx->stat();
             string result = "";
 
             for (int i = 0; i < state_ctx.size(); i++){ 
                 string stat_str;     
-                stat_str = to_string((double)visit(ctx->stat(i)));
+                stat_str = to_string(any_cast<double>(visit(ctx->stat(i))));
                 //cout << output_flag << endl;
                 if (output_flag)          
                     result += stat_str + '\n';    
@@ -62,14 +62,14 @@ class Calc : public ExprVisitor{
         }
 
 
-        antlrcpp::Any visitReturnValue(ExprParser::ReturnValueContext *ctx) override {
+        any visitReturnValue(ExprParser::ReturnValueContext *ctx) override {
             output_flag = true;
             return visit(ctx->expr());
         }
 
 
-        antlrcpp::Any visitAssignment(ExprParser::AssignmentContext *ctx) override {
-            id_memory[ctx->ID()->getText()] = visit(ctx->expr());
+        any visitAssignment(ExprParser::AssignmentContext *ctx) override {
+            id_memory[ctx->ID()->getText()] = any_cast<double>(visit(ctx->expr()));
 
             auto begin = id_memory.begin(), end = id_memory.end();
             cout << "id_memory{";
@@ -83,33 +83,33 @@ class Calc : public ExprVisitor{
         }
 
 
-        antlrcpp::Any visitIgnore(ExprParser::IgnoreContext *ctx) override {
+        any visitIgnore(ExprParser::IgnoreContext *ctx) override {
             output_flag = false;
             return 0.0;
         }
 
 
-        antlrcpp::Any visitParen(ExprParser::ParenContext *ctx) override {
+        any visitParen(ExprParser::ParenContext *ctx) override {
             return visit(ctx->expr());
         }
 
 
-        antlrcpp::Any visitPm_expr(ExprParser::Pm_exprContext *ctx) override {
-            double result = visit(ctx->expr());
+        any visitPm_expr(ExprParser::Pm_exprContext *ctx) override {
+            double result = any_cast<double>(visit(ctx->expr()));
             if (ctx->op->getText()[0] == '-')
                 result = (-1)*result;
             return result;
         }
 
 
-        antlrcpp::Any visitVar(ExprParser::VarContext *ctx) override {
+        any visitVar(ExprParser::VarContext *ctx) override {
             return id_memory[ctx->ID()->getText()];
         }
 
 
-        antlrcpp::Any visitMul_div(ExprParser::Mul_divContext *ctx) override {
-            double left  = visit(ctx->expr(0));
-            double right = visit(ctx->expr(1));
+        any visitMul_div(ExprParser::Mul_divContext *ctx) override {
+            double left  = any_cast<double>(visit(ctx->expr(0)));
+            double right = any_cast<double>(visit(ctx->expr(1)));
             double result;
             if (ctx->op->getText()[0] == '*')
                 result = left * right;
@@ -119,25 +119,25 @@ class Calc : public ExprVisitor{
         }
 
 
-        antlrcpp::Any visitInteger(ExprParser::IntegerContext *ctx) override {
+        any visitInteger(ExprParser::IntegerContext *ctx) override {
             return stod(ctx->INT()->getText());
         }
 
 
-        antlrcpp::Any visitFloat(ExprParser::FloatContext *ctx) override {
+        any visitFloat(ExprParser::FloatContext *ctx) override {
             return stod(ctx->FLOAT()->getText());
         }
 
 
-        antlrcpp::Any visitExpo(ExprParser::ExpoContext *ctx) override {
-            double left  = visit(ctx->expr(0));
-            double right = visit(ctx->expr(1));
+        any visitExpo(ExprParser::ExpoContext *ctx) override {
+            double left  = any_cast<double>(visit(ctx->expr(0)));
+            double right = any_cast<double>(visit(ctx->expr(1)));
             return pow(left, right);
         }
 
-        antlrcpp::Any visitAdd_sub(ExprParser::Add_subContext *ctx) override {
-            double left  = visit(ctx->expr(0));
-            double right = visit(ctx->expr(1));
+        any visitAdd_sub(ExprParser::Add_subContext *ctx) override {
+            double left  = any_cast<double>(visit(ctx->expr(0)));
+            double right = any_cast<double>(visit(ctx->expr(1)));
             double result;
             if (ctx->op->getText()[0] == '+')
                 result = left + right;
@@ -171,7 +171,7 @@ int main(int argc, const char *args[])
     cout <<beautify_lisp_string(lisp_tree_str) << '\n' << endl;
    
     Calc *calc = new Calc();
-    string result = calc->visit(tree);
+    string result = any_cast<string>(calc->visit(tree));
     cout << "\nresult=\n" << result << endl;
 
     return 0;

@@ -9,6 +9,7 @@ using namespace antlr4;
 using namespace tree;
 using namespace std;
 
+#include <iomanip>
 
 string indent_sp(int size)
 {   
@@ -38,7 +39,7 @@ string beautify_lisp_string(string in_string)
         else
             out_string += in_string[i];
      
-return out_string;
+    return out_string;
 }
 
 
